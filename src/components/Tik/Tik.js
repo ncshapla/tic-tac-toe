@@ -3,7 +3,7 @@ import './Tik.css';
 
 
 const Tik = () => {
-    const [turn, setTurn] = useState('x');
+    const [turn, setTurn] = useState('X');
     const [call, setCall] = useState(Array(9).fill(''));
 
     const [winner, setWinner] = useState('');
@@ -53,13 +53,13 @@ const Tik = () => {
 
        let square = [...call];
 
-        if(turn === 'x'){
-             square[num]  = 'x';
-            setTurn('o');
+        if(turn === 'X'){
+             square[num]  = 'X';
+            setTurn('O');
         }
         else{
-             square[num] = 'o';
-            setTurn('x');
+             square[num] = 'O';
+            setTurn('X');
         }
         checkforWinner(square);
         setCall(square);
@@ -71,12 +71,12 @@ const Tik = () => {
     }
 
     const Cell =({num})=>{
-     return <td onClick={() => handleClick(num)}>{call[num]}</td>;
+     return <td style={(turn === 'O')? {color: "green"} : {color: "red"}}  onClick={() => handleClick(num)}>{call[num]}</td>;
     }
     return ( 
         <div className="container">
             <table> 
-                Turn:{turn}
+                Turn: {turn}
                 <tbody>
                     <tr>
                        <Cell num={0}/>
